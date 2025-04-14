@@ -79,7 +79,26 @@ KHÓA CHÍNH LÀ STT
 
 ![image](https://github.com/user-attachments/assets/954f6bd4-cd3a-4f83-99f6-c313867ed043)
 
+## ĐÂY LÀ CODE TRUY VẤN 
 
+```sql
+ DECLARE @datetime1 DATETIME = '2025-03-17 13:00:00';
+DECLARE @datetime2 DATETIME = '2025-03-17 15:30:00';
+
+SELECT 
+    gv.tengv AS [Họ tên GV],
+    monhoc.tenmon AS [Tên môn học],
+    tkb.giovao AS [Giờ vào lớp],
+    tkb.giora AS [Giờ ra lớp]
+FROM tkb
+JOIN gv ON tkb.magv = gv.magv
+JOIN monhoc ON tkb.mamon = monhoc.mamon
+WHERE 
+
+    tkb.giovao <= CAST(@datetime2 AS TIME) 
+    AND tkb.giora >= CAST(@datetime1 AS TIME);
+
+```
 
 
 
